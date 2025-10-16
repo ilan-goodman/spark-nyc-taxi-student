@@ -18,13 +18,13 @@ Other notes
 spark-submit \
   --master 'local[4]' \
   --conf spark.sql.shuffle.partitions=8 \
-  --packages net.snowflake:spark-snowflake_2.13:2.13.0-spark_3.3,net.snowflake:snowflake-jdbc:3.17.0 \
-  jobs/nyc_taxi_etl_solution.py \
+  --packages net.snowflake:spark-snowflake_2.13:2.13.0-spark_3.4,net.snowflake:snowflake-jdbc:3.17.0 \
+  jobs/nyc_taxi_etl_template.py \
   --input_paths data/raw/yellow_tripdata_2023-02.parquet data/raw/yellow_tripdata_2023-03.parquet \
   --zone_csv data/raw/taxi_zone_lookup.csv \
   --curated_out data/curated/yellow \
   --aggregates_out data/aggregates \
-  --write_snowflake
+  --write_snowflake false
 ```
 
 Deliverables
