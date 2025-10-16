@@ -12,6 +12,20 @@ What You’ll Do
 
 Other notes
 - You may want to comment out the `spark.stop()` line while testing so you can view the Spark UI after the job is finished.
+- You can run spark jobs in a script via `spark-submit`, in a spark REPL via `pyspark`, or in a Jupyter notebook. You can also trigger a Spark job as an Airflow task using the `SparkSubmitOperator`.
+- Sample `spark-submit` command to run your Spark job from the command line:
+```
+spark-submit \
+  --master 'local[4]' \
+  --conf spark.sql.shuffle.partitions=8 \
+  --packages net.snowflake:spark-snowflake_2.13:2.13.0-spark_3.3,net.snowflake:snowflake-jdbc:3.17.0 \
+  jobs/nyc_taxi_etl_solution.py \
+  --input_paths data/raw/yellow_tripdata_2023-02.parquet data/raw/yellow_tripdata_2023-03.parquet \
+  --zone_csv data/raw/taxi_zone_lookup.csv \
+  --curated_out data/curated/yellow \
+  --aggregates_out data/aggregates \
+  --write_snowflake
+```
 
 Deliverables
 - Completed `jobs/nyc_taxi_etl_template.py`
