@@ -10,6 +10,9 @@ What You’ll Do
 5) Write to Snowflake (supports key‑pair auth). See `docs/SNOWFLAKE_SETUP.md`.
 6) Optimize something (partitioning, caching, broadcast joins) and document its impact.
 
+Other notes
+- You may want to comment out the `spark.stop()` line while testing so you can view the Spark UI after the job is finished.
+
 Deliverables
 - Completed `jobs/nyc_taxi_etl_template.py`
 - Spark UI screenshots (DAG visualization and a shuffle stage page)
